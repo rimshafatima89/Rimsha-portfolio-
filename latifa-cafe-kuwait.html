@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latifa Cafe — Kuwait City</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --mocha:   #6F4E37;
+  --mocha2:  #8B6347;
+  --caramel: #C68642;
+  --caramel2:#E8A85F;
+  --latte:   #D4A96A;
+  --cream:   #FDF6EC;
+  --cream2:  #FAF0E0;
+  --rose:    #E8B4B8;
+  --rose2:   #F2D0D2;
+  --sage:    #8FAF8B;
+  --dark:    #2C1810;
+  --dark2:   #3D2314;
+  --text:    #3D2314;
+  --muted:   #9E7E6A;
+  --white:   #FFFFFF;
+  --border:  rgba(111,78,55,0.12);
+}
+
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ══ NOISE OVERLAY ══ */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.5;}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;width:100%;z-index:500;padding:1.1rem 6%;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav.solid{background:rgba(253,246,236,.97);backdrop-filter:blur(20px);box-shadow:0 2px 25px rgba(111,78,55,.1);}
+.nav-logo{font-family:'Bodoni Moda',serif;font-size:1.6rem;font-weight:700;color:var(--mocha);letter-spacing:1px;}
+.nav-logo span{color:var(--caramel);font-style:italic;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.8rem;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.5px;transition:color .3s;}
+.nav-links a:hover{color:var(--mocha);}
+.nav-btn{background:var(--mocha);color:var(--cream);padding:.55rem 1.5rem;border:none;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;letter-spacing:.5px;transition:all .3s;}
+.nav-btn:hover{background:var(--dark);transform:translateY(-1px);}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:8rem 6% 5rem 8%;position:relative;z-index:2;background:var(--cream);}
+
+.hero-tag{display:inline-flex;align-items:center;gap:.7rem;font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--caramel);margin-bottom:1.8rem;}
+.hero-tag-line{width:30px;height:2px;background:var(--caramel);}
+
+.hero-h1{font-family:'Bodoni Moda',serif;font-size:clamp(3rem,5.5vw,6rem);font-weight:900;line-height:1;margin-bottom:1.5rem;color:var(--dark);}
+.hero-h1 em{color:var(--caramel);font-style:italic;display:block;}
+
+.hero-p{font-size:.95rem;font-weight:400;line-height:1.9;color:var(--muted);max-width:400px;margin-bottom:2.5rem;}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.btn-fill{background:var(--mocha);color:var(--cream);padding:.85rem 2rem;border:none;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;letter-spacing:.5px;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-fill:hover{background:var(--dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(44,24,16,.25);}
+.btn-outline{background:transparent;color:var(--mocha);padding:.85rem 2rem;border:2px solid var(--border);border-radius:50px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;letter-spacing:.5px;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{border-color:var(--mocha);background:rgba(111,78,55,.05);}
+
+/* Hero stats */
+.hero-pills{display:flex;gap:.8rem;flex-wrap:wrap;}
+.hero-pill{background:white;border:1px solid var(--border);border-radius:50px;padding:.45rem 1rem;font-size:.72rem;font-weight:600;color:var(--mocha);display:flex;align-items:center;gap:.4rem;box-shadow:0 2px 10px rgba(111,78,55,.06);}
+
+/* Hero right — image */
+.hero-right{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:sepia(8%) contrast(1.05) brightness(.97);}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--cream) 0%,transparent 25%),linear-gradient(to top,var(--cream) 0%,transparent 20%);}
+
+/* Floating badge */
+.hero-float{position:absolute;top:3rem;right:3rem;background:white;border-radius:20px;padding:1.2rem 1.5rem;box-shadow:0 10px 40px rgba(111,78,55,.15);text-align:center;animation:gentleFloat 4s ease infinite;}
+.hf-emoji{font-size:2rem;display:block;margin-bottom:.3rem;}
+.hf-text{font-family:'Bodoni Moda',serif;font-size:.85rem;font-weight:700;color:var(--mocha);}
+.hf-sub{font-size:.65rem;color:var(--muted);}
+
+.hero-float2{position:absolute;bottom:4rem;left:2rem;background:var(--mocha);border-radius:16px;padding:1rem 1.3rem;box-shadow:0 10px 30px rgba(44,24,16,.3);display:flex;align-items:center;gap:.8rem;animation:gentleFloat 5s ease infinite reverse;}
+.hf2-icon{font-size:1.5rem;}
+.hf2-title{font-weight:700;font-size:.8rem;color:var(--cream);}
+.hf2-sub{font-size:.65rem;color:rgba(253,246,236,.6);}
+
+@keyframes gentleFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* ══ MARQUEE ══ */
+.marquee-strip{background:var(--mocha);padding:.65rem 0;overflow:hidden;display:flex;}
+.marquee-track{display:flex;gap:2.5rem;animation:marquee 20s linear infinite;white-space:nowrap;}
+.m-item{font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(253,246,236,.8);display:flex;align-items:center;gap:1rem;}
+.m-dot{width:4px;height:4px;background:var(--caramel);border-radius:50%;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ══ SHARED SECTION ══ */
+section{padding:6rem 6%;position:relative;z-index:1;}
+.sec-label{font-size:.65rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--caramel);display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;}
+.sec-label::before{content:'';width:24px;height:2px;background:var(--caramel);}
+.sec-h{font-family:'Bodoni Moda',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;line-height:1.1;color:var(--dark);}
+.sec-h em{color:var(--caramel);font-style:italic;}
+.gold-bar{width:50px;height:3px;background:linear-gradient(90deg,var(--caramel),var(--latte));border-radius:50px;margin:1.2rem 0;}
+
+/* ══ ABOUT ══ */
+.about{background:white;display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;}
+.about-imgs{position:relative;}
+.about-img-main{width:85%;aspect-ratio:3/4;object-fit:cover;border-radius:24px;filter:sepia(5%);}
+.about-img-sm{position:absolute;bottom:-2rem;right:0;width:50%;aspect-ratio:1;object-fit:cover;border-radius:18px;border:5px solid white;filter:sepia(5%);box-shadow:0 10px 40px rgba(111,78,55,.15);}
+.about-badge{position:absolute;top:2rem;right:-1rem;background:var(--caramel);color:white;width:80px;height:80px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 8px 25px rgba(198,134,66,.4);}
+.ab-num{font-family:'Bodoni Moda',serif;font-size:1.6rem;font-weight:900;line-height:1;}
+.ab-txt{font-size:.48rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;line-height:1.2;}
+.about-text p{font-size:.9rem;font-weight:400;line-height:1.95;color:var(--muted);margin-bottom:1.2rem;}
+.about-items{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.about-item{background:var(--cream2);border-radius:16px;padding:1.2rem;border:1px solid var(--border);}
+.ai-icon{font-size:1.5rem;margin-bottom:.4rem;}
+.ai-title{font-weight:700;font-size:.85rem;color:var(--dark);}
+.ai-desc{font-size:.72rem;color:var(--muted);margin-top:.2rem;line-height:1.5;}
+
+/* ══ MENU ══ */
+.menu-sec{background:var(--cream2);}
+.menu-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;}
+.menu-tabs{display:flex;gap:.5rem;flex-wrap:wrap;}
+.mtab{padding:.5rem 1.3rem;border-radius:50px;border:1.5px solid var(--border);background:white;font-weight:600;font-size:.75rem;cursor:pointer;transition:all .3s;color:var(--muted);}
+.mtab.on{background:var(--mocha);border-color:var(--mocha);color:white;}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem;}
+
+/* Menu card */
+.mc{background:white;border-radius:22px;overflow:hidden;transition:all .35s;box-shadow:0 4px 20px rgba(111,78,55,.07);}
+.mc:hover{transform:translateY(-6px);box-shadow:0 16px 45px rgba(111,78,55,.14);}
+.mc-img{height:185px;overflow:hidden;position:relative;}
+.mc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:sepia(5%);}
+.mc:hover .mc-img img{transform:scale(1.07);}
+.mc-tag{position:absolute;top:.8rem;left:.8rem;padding:.22rem .7rem;border-radius:50px;font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.mc-tag.sig{background:rgba(198,134,66,.15);color:var(--caramel);}
+.mc-tag.new{background:rgba(143,175,139,.2);color:#4a7a46;}
+.mc-tag.pop{background:rgba(232,180,184,.3);color:#a0404a;}
+.mc-tag.sp{background:rgba(111,78,55,.12);color:var(--mocha);}
+.mc-body{padding:1.2rem;}
+.mc-name{font-family:'Bodoni Moda',serif;font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.3rem;}
+.mc-desc{font-size:.75rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem;}
+.mc-foot{display:flex;justify-content:space-between;align-items:center;}
+.mc-price{font-family:'Bodoni Moda',serif;font-size:1.1rem;color:var(--caramel);font-weight:700;}
+.mc-btn{background:var(--mocha);color:white;border:none;border-radius:50px;padding:.38rem .95rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;cursor:pointer;transition:all .3s;}
+.mc-btn:hover{background:var(--dark);transform:scale(1.05);}
+
+/* ══ AMBIANCE ══ */
+.ambiance{background:var(--dark);padding:6rem 0;overflow:hidden;}
+.ambiance-header{padding:0 6%;margin-bottom:3rem;}
+.ambiance-header .sec-label{color:var(--latte);}
+.ambiance-header .sec-label::before{background:var(--latte);}
+.ambiance-header .sec-h{color:var(--cream);}
+.ambiance-header .sec-h em{color:var(--caramel2);}
+.ambiance-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:250px 250px;gap:4px;}
+.amb-item{overflow:hidden;position:relative;}
+.amb-item:first-child{grid-row:span 2;}
+.amb-item img{width:100%;height:100%;object-fit:cover;filter:sepia(15%) brightness(.85);transition:all .5s;}
+.amb-item:hover img{filter:sepia(0%) brightness(1);transform:scale(1.05);}
+.amb-label{position:absolute;bottom:1rem;left:1rem;background:rgba(44,24,16,.7);backdrop-filter:blur(8px);border-radius:50px;padding:.3rem .9rem;font-size:.62rem;font-weight:600;color:var(--latte);letter-spacing:1px;}
+
+/* ══ SPECIALS ══ */
+.specials{background:var(--cream);}
+.specials-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.specials-text p{font-size:.9rem;font-weight:400;line-height:1.9;color:var(--muted);margin-bottom:2rem;}
+.special-list{display:flex;flex-direction:column;gap:1rem;}
+.sp-item{display:flex;align-items:center;gap:1.2rem;background:white;border-radius:16px;padding:1rem 1.2rem;border:1px solid var(--border);transition:all .3s;}
+.sp-item:hover{border-color:var(--caramel);transform:translateX(5px);}
+.sp-emoji{font-size:2rem;flex-shrink:0;}
+.sp-name{font-weight:700;font-size:.88rem;color:var(--dark);}
+.sp-desc{font-size:.72rem;color:var(--muted);margin-top:.1rem;}
+.sp-price{font-family:'Bodoni Moda',serif;font-size:1rem;color:var(--caramel);margin-left:auto;font-weight:700;white-space:nowrap;}
+.specials-img{position:relative;}
+.specials-img img{width:100%;border-radius:24px;box-shadow:0 20px 60px rgba(111,78,55,.2);filter:sepia(5%);}
+.specials-img::after{content:'"Coffee is\Athe pause\Athat refreshes"';white-space:pre;position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--caramel);color:white;padding:1.2rem;border-radius:16px;font-family:'Bodoni Moda',serif;font-size:.82rem;font-style:italic;line-height:1.6;max-width:160px;text-align:center;box-shadow:0 8px 25px rgba(198,134,66,.35);}
+
+/* ══ TESTIMONIALS ══ */
+.reviews{background:white;}
+.rev-header{text-align:center;margin-bottom:3.5rem;}
+.rev-header .sec-label{justify-content:center;}
+.rev-header .sec-label::before{display:none;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.rev-card{border-radius:22px;padding:2rem;transition:all .3s;}
+.rev-card:nth-child(1){background:var(--cream2);border:1px solid var(--border);}
+.rev-card:nth-child(2){background:var(--mocha);color:white;}
+.rev-card:nth-child(3){background:var(--cream2);border:1px solid var(--border);}
+.rev-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(111,78,55,.12);}
+.rev-stars{font-size:.8rem;letter-spacing:2px;color:var(--caramel);margin-bottom:1rem;}
+.rev-card:nth-child(2) .rev-stars{color:var(--caramel2);}
+.rev-quote{font-family:'Bodoni Moda',serif;font-size:3.5rem;color:rgba(111,78,55,.15);line-height:.8;margin-bottom:.5rem;}
+.rev-card:nth-child(2) .rev-quote{color:rgba(253,246,236,.15);}
+.rev-text{font-size:.85rem;font-weight:400;line-height:1.85;color:var(--muted);margin-bottom:1.5rem;}
+.rev-card:nth-child(2) .rev-text{color:rgba(253,246,236,.8);}
+.rev-footer{display:flex;align-items:center;gap:.8rem;}
+.rev-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bodoni Moda',serif;font-size:1.1rem;font-weight:700;flex-shrink:0;}
+.ra1{background:linear-gradient(135deg,var(--caramel),var(--latte));color:white;}
+.ra2{background:rgba(253,246,236,.2);color:var(--cream);}
+.ra3{background:linear-gradient(135deg,var(--rose),var(--rose2));color:var(--mocha);}
+.rev-name{font-weight:700;font-size:.85rem;color:var(--dark);}
+.rev-card:nth-child(2) .rev-name{color:white;}
+.rev-loc{font-size:.68rem;color:var(--muted);}
+.rev-card:nth-child(2) .rev-loc{color:rgba(253,246,236,.55);}
+
+/* ══ RESERVATION ══ */
+.reservation{background:var(--cream2);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.res-left p{font-size:.9rem;font-weight:400;line-height:1.9;color:var(--muted);margin-bottom:2rem;}
+.res-hours{display:flex;flex-direction:column;gap:.8rem;}
+.res-hour{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-bottom:1px solid var(--border);}
+.rh-day{font-size:.72rem;font-weight:600;color:var(--muted);letter-spacing:.5px;}
+.rh-time{font-family:'Bodoni Moda',serif;font-size:.95rem;color:var(--caramel);}
+.res-form{background:white;border-radius:24px;padding:2.5rem;box-shadow:0 8px 40px rgba(111,78,55,.1);}
+.res-form h3{font-family:'Bodoni Moda',serif;font-size:1.4rem;color:var(--dark);margin-bottom:1.5rem;}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.res-full{grid-column:span 2;}
+.rinput{background:var(--cream);border:1.5px solid var(--border);color:var(--text);padding:.8rem 1.1rem;border-radius:12px;font-family:'Outfit',sans-serif;font-size:.82rem;width:100%;outline:none;transition:border-color .3s;}
+.rinput:focus{border-color:var(--caramel);}
+.rinput::placeholder{color:var(--muted);}
+.res-submit{grid-column:span 2;background:var(--mocha);color:white;border:none;padding:.9rem;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.5px;cursor:pointer;transition:all .3s;margin-top:.5rem;}
+.res-submit:hover{background:var(--dark);transform:translateY(-2px);}
+
+/* ══ CONTACT ══ */
+.contact{background:white;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.contact-infos{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;}
+.c-item{display:flex;align-items:flex-start;gap:1rem;}
+.c-icon{width:44px;height:44px;background:var(--cream2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:.2rem;}
+.c-val{font-size:.9rem;font-weight:600;color:var(--dark);line-height:1.5;}
+.contact-map{border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(111,78,55,.12);aspect-ratio:1;}
+.contact-map iframe{width:100%;height:100%;border:none;filter:sepia(20%) contrast(.9);}
+.social-row{display:flex;gap:.7rem;margin-top:2rem;}
+.soc-btn{width:40px;height:40px;border-radius:12px;background:var(--cream2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;transition:all .3s;}
+.soc-btn:hover{background:var(--mocha);border-color:var(--mocha);}
+
+/* ══ FOOTER ══ */
+footer{background:var(--dark);padding:4rem 6% 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
+.f-logo{font-family:'Bodoni Moda',serif;font-size:1.8rem;color:var(--caramel);font-weight:700;display:block;margin-bottom:.8rem;}
+.f-desc{font-size:.78rem;color:rgba(253,246,236,.4);line-height:1.85;max-width:250px;}
+.f-col h4{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(253,246,236,.35);margin-bottom:1.2rem;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.f-col a{font-size:.8rem;color:rgba(253,246,236,.5);text-decoration:none;font-weight:500;transition:color .3s;}
+.f-col a:hover{color:var(--caramel);}
+.footer-bottom{border-top:1px solid rgba(253,246,236,.07);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.f-copy{font-size:.7rem;color:rgba(253,246,236,.3);}
+.f-copy span{color:var(--caramel);}
+
+/* ══ WA ══ */
+.wa-btn{position:fixed;bottom:2rem;right:2rem;z-index:400;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 6px 30px rgba(37,211,102,.45);animation:waPulse 2.5s ease infinite;transition:transform .3s;}
+.wa-btn:hover{transform:scale(1.1);}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 30px rgba(37,211,102,.45);}50%{box-shadow:0 6px 50px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.1);}}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(25px);transition:all .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:8rem 6% 5rem;}
+  .about,.specials-inner,.reservation,.contact{grid-template-columns:1fr;gap:3.5rem;}
+  .about-imgs{max-width:480px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .rev-grid{grid-template-columns:1fr 1fr;}
+  .ambiance-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .amb-item:first-child{grid-row:span 1;}
+}
+@media(max-width:640px){
+  nav .nav-links,.nav-btn{display:none;}
+  .rev-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .res-grid{grid-template-columns:1fr;}
+  .res-full,.res-submit{grid-column:span 1;}
+  .ambiance-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Latifa <span>Cafe</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#ambiance">Ambiance</a></li>
+    <li><a href="#contact">Find Us</a></li>
+  </ul>
+  <button class="nav-btn" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})">Reserve ☕</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag"><div class="hero-tag-line"></div>Est. 2018 · Kuwait City</div>
+    <h1 class="hero-h1">Where Every<br>Cup Feels Like<em>Home ☕</em></h1>
+    <p class="hero-p">A warm corner in the heart of Kuwait — handcrafted coffee, freshly baked pastries, and a cozy atmosphere that welcomes you like family.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-fill">Explore Our Menu</a>
+      <a href="#reservation" class="btn-outline">Book a Table</a>
+    </div>
+    <div class="hero-pills">
+      <span class="hero-pill">☕ Specialty Coffee</span>
+      <span class="hero-pill">🧁 Fresh Pastries</span>
+      <span class="hero-pill">🌿 Herbal Teas</span>
+      <span class="hero-pill">📶 Free WiFi</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=85" alt="Latifa Cafe">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-float">
+      <span class="hf-emoji">🏆</span>
+      <div class="hf-text">Best Cafe</div>
+      <div class="hf-sub">Kuwait 2024</div>
+    </div>
+    <div class="hero-float2">
+      <div class="hf2-icon">⭐</div>
+      <div><div class="hf2-title">4.9 / 5.0</div><div class="hf2-sub">3,200+ Reviews</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="m-item">☕ Specialty Coffee<div class="m-dot"></div></span>
+    <span class="m-item">🧁 Homemade Pastries<div class="m-dot"></div></span>
+    <span class="m-item">🌿 Herbal Teas<div class="m-dot"></div></span>
+    <span class="m-item">🇰🇼 Kuwait City<div class="m-dot"></div></span>
+    <span class="m-item">📶 Free WiFi<div class="m-dot"></div></span>
+    <span class="m-item">❤️ Since 2018<div class="m-dot"></div></span>
+    <span class="m-item">☕ Specialty Coffee<div class="m-dot"></div></span>
+    <span class="m-item">🧁 Homemade Pastries<div class="m-dot"></div></span>
+    <span class="m-item">🌿 Herbal Teas<div class="m-dot"></div></span>
+    <span class="m-item">🇰🇼 Kuwait City<div class="m-dot"></div></span>
+    <span class="m-item">📶 Free WiFi<div class="m-dot"></div></span>
+    <span class="m-item">❤️ Since 2018<div class="m-dot"></div></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <div class="about-imgs">
+    <div class="about-badge"><span class="ab-num">6</span><span class="ab-txt">Years of Love</span></div>
+    <img class="about-img-main" src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=900&q=85" alt="Cafe interior">
+    <img class="about-img-sm" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=85" alt="Coffee">
+  </div>
+  <div class="about-text">
+    <div class="sec-label">Our Story</div>
+    <h2 class="sec-h">A Place Built on<br><em>Warmth & Love</em></h2>
+    <div class="gold-bar"></div>
+    <p>Latifa Cafe was born from a simple dream — to create a cozy corner in Kuwait where everyone feels welcome. Named after our founder's grandmother, Latifa, every detail of this cafe carries her spirit of warmth, generosity, and love.</p>
+    <p>From our hand-selected specialty coffee beans to our freshly baked pastries made each morning, we pour heart into everything we serve. This is not just a cafe — it is your second home.</p>
+    <div class="about-items">
+      <div class="about-item"><div class="ai-icon">☕</div><div class="ai-title">Specialty Coffee</div><div class="ai-desc">Beans sourced from Ethiopia, Colombia & Yemen</div></div>
+      <div class="about-item"><div class="ai-icon">🧁</div><div class="ai-title">Fresh Daily</div><div class="ai-desc">Pastries baked every morning from scratch</div></div>
+      <div class="about-item"><div class="ai-icon">🌿</div><div class="ai-title">Natural Ingredients</div><div class="ai-desc">No artificial flavours — always fresh & natural</div></div>
+      <div class="about-item"><div class="ai-icon">💛</div><div class="ai-title">Made with Love</div><div class="ai-desc">Every cup crafted by our trained baristas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-sec reveal" id="menu">
+  <div class="menu-top">
+    <div>
+      <div class="sec-label">Our Menu</div>
+      <h2 class="sec-h">Crafted with <em>Care</em></h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="mtab on" onclick="switchTab(this,'coffee')">☕ Coffee</button>
+      <button class="mtab" onclick="switchTab(this,'tea')">🍵 Tea & More</button>
+      <button class="mtab" onclick="switchTab(this,'food')">🧁 Food</button>
+      <button class="mtab" onclick="switchTab(this,'cold')">🧊 Cold Drinks</button>
+    </div>
+  </div>
+  <div class="menu-grid" id="mgrid"></div>
+</section>
+
+<!-- AMBIANCE -->
+<section class="ambiance reveal" id="ambiance">
+  <div class="ambiance-header">
+    <div class="sec-label">Our Space</div>
+    <h2 class="sec-h" style="color:var(--cream)">A Corner to <em>Unwind</em></h2>
+  </div>
+  <div class="ambiance-grid">
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85" alt="Cafe"><div class="amb-label">Main Hall</div></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=85" alt="Coffee"><div class="amb-label">Barista Bar</div></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=600&q=85" alt="Interior"><div class="amb-label">Cozy Corners</div></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600&q=85" alt="Outside"><div class="amb-label">Outdoor Seating</div></div>
+    <div class="amb-item"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=85" alt="Latte art"><div class="amb-label">Latte Art</div></div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials reveal" id="specials">
+  <div class="specials-inner">
+    <div class="specials-text">
+      <div class="sec-label">Today's Specials</div>
+      <h2 class="sec-h">Must-Try <em>Favourites</em></h2>
+      <div class="gold-bar"></div>
+      <p>Our most loved items — handpicked by our baristas and adored by our regulars. Try them before they sell out!</p>
+      <div class="special-list">
+        <div class="sp-item reveal"><span class="sp-emoji">☕</span><div><div class="sp-name">Saffron Latte</div><div class="sp-desc">Espresso, steamed milk, Kuwaiti saffron, honey</div></div><span class="sp-price">2.200 KD</span></div>
+        <div class="sp-item reveal"><span class="sp-emoji">🧁</span><div><div class="sp-name">Date & Walnut Cake</div><div class="sp-desc">Freshly baked, served warm with caramel drizzle</div></div><span class="sp-price">1.800 KD</span></div>
+        <div class="sp-item reveal"><span class="sp-emoji">🍵</span><div><div class="sp-name">Rose Karak Chai</div><div class="sp-desc">Spiced tea, rose water, evaporated milk</div></div><span class="sp-price">1.500 KD</span></div>
+        <div class="sp-item reveal"><span class="sp-emoji">🥐</span><div><div class="sp-name">Zaatar Croissant</div><div class="sp-desc">Buttery croissant, zaatar blend, labneh cream</div></div><span class="sp-price">1.200 KD</span></div>
+      </div>
+    </div>
+    <div class="specials-img reveal">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=85" alt="Specialty coffee">
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews reveal" id="reviews">
+  <div class="rev-header">
+    <div class="sec-label">Happy Guests</div>
+    <h2 class="sec-h">They <em>Love</em> Latifa ❤️</h2>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><div class="rev-quote">"</div><p class="rev-text">Latifa Cafe is my favourite place in all of Kuwait. The saffron latte is unlike anything else — warm, aromatic and so comforting. I come here every single morning before work!</p><div class="rev-footer"><div class="rev-av ra1">N</div><div><div class="rev-name">Noura Al-Rashidi</div><div class="rev-loc">Fahaheel, Kuwait 🇰🇼</div></div></div></div>
+    <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><div class="rev-quote">"</div><p class="rev-text">The cosiest cafe in Kuwait! Perfect for working or catching up with friends. The date cake is absolutely divine and the staff always remember my order. Feels like family!</p><div class="rev-footer"><div class="rev-av ra2">S</div><div><div class="rev-name">Sara Al-Mutairi</div><div class="rev-loc">Salmiya, Kuwait 🇰🇼</div></div></div></div>
+    <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><div class="rev-quote">"</div><p class="rev-text">I have tried cafes across Dubai and Beirut — Latifa stands out for its genuine warmth and quality. The zaatar croissant is my obsession. A true gem in Kuwait!</p><div class="rev-footer"><div class="rev-av ra3">M</div><div><div class="rev-name">Mohammed Al-Enezy</div><div class="rev-loc">Hawalli, Kuwait 🇰🇼</div></div></div></div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation reveal" id="reservation">
+  <div class="res-left">
+    <div class="sec-label">Book a Table</div>
+    <h2 class="sec-h">Reserve Your <em>Cozy Corner</em></h2>
+    <div class="gold-bar"></div>
+    <p>Whether it's a quiet morning alone or a gathering with friends — we'll have your favourite spot ready for you.</p>
+    <div class="res-hours">
+      <div class="res-hour"><span class="rh-day">Saturday – Thursday</span><span class="rh-time">7:00 AM – 11:00 PM</span></div>
+      <div class="res-hour"><span class="rh-day">Friday</span><span class="rh-time">9:00 AM – 12:00 AM</span></div>
+      <div class="res-hour"><span class="rh-day">Ramadan</span><span class="rh-time">Iftar – 2:00 AM</span></div>
+    </div>
+  </div>
+  <div class="res-form reveal">
+    <h3>Make a Reservation ☕</h3>
+    <div class="res-grid">
+      <input class="rinput" type="text" placeholder="Your Name">
+      <input class="rinput" type="tel" placeholder="WhatsApp Number">
+      <input class="rinput" type="date">
+      <input class="rinput" type="time">
+      <select class="rinput res-full"><option value="" disabled selected>Number of Guests</option><option>1 Guest</option><option>2 Guests</option><option>3–4 Guests</option><option>5–6 Guests</option><option>7+ Guests</option></select>
+      <textarea class="rinput res-full" rows="3" placeholder="Any special requests? (e.g. birthday surprise, quiet corner...)"></textarea>
+      <button class="res-submit">Confirm Reservation ☕</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div>
+    <div class="sec-label">Visit Us</div>
+    <h2 class="sec-h">Find <em>Latifa</em> 📍</h2>
+    <div class="contact-infos">
+      <div class="c-item"><div class="c-icon">📍</div><div><div class="c-label">Address</div><div class="c-val">Block 5, Al Corniche Street<br>Fahaheel, Kuwait</div></div></div>
+      <div class="c-item"><div class="c-icon">📞</div><div><div class="c-label">Phone & WhatsApp</div><div class="c-val">+965 9988 7766</div></div></div>
+      <div class="c-item"><div class="c-icon">🕐</div><div><div class="c-label">Hours</div><div class="c-val">Sat–Thu: 7AM – 11PM<br>Friday: 9AM – 12AM</div></div></div>
+      <div class="c-item"><div class="c-icon">📶</div><div><div class="c-label">WiFi</div><div class="c-val">Free WiFi for all guests</div></div></div>
+    </div>
+    <div class="social-row">
+      <a class="soc-btn" href="#">📸</a>
+      <a class="soc-btn" href="#">💬</a>
+      <a class="soc-btn" href="#">🐦</a>
+      <a class="soc-btn" href="#">🎵</a>
+    </div>
+  </div>
+  <div class="contact-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478!2d48.0780!3d29.0850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zRmFoYWhlZWw!5e0!3m2!1sen!2skw!4v1" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div><span class="f-logo">Latifa Cafe ☕</span><p class="f-desc">A warm corner in Kuwait where every cup feels like home. Handcrafted coffee, fresh pastries, and genuine hospitality since 2018.</p></div>
+    <div class="f-col"><h4>Menu</h4><ul><li><a href="#">Specialty Coffee</a></li><li><a href="#">Tea & Drinks</a></li><li><a href="#">Pastries & Food</a></li><li><a href="#">Cold Drinks</a></li></ul></div>
+    <div class="f-col"><h4>Visit</h4><ul><li><a href="#">Fahaheel Branch</a></li><li><a href="#">Reservations</a></li><li><a href="#">Private Events</a></li><li><a href="#">Find on Maps</a></li></ul></div>
+    <div class="f-col"><h4>Follow</h4><ul><li><a href="#">Instagram 📸</a></li><li><a href="#">TikTok 🎵</a></li><li><a href="#">WhatsApp 💬</a></li><li><a href="#">Snapchat 👻</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="f-copy">© 2025 Latifa Cafe, Fahaheel, Kuwait. All rights reserved. Website by <span>Rimsha Fatima</span></p>
+    <p class="f-copy">☕ Specialty Coffee · Halal Certified · Kuwait</p>
+  </div>
+</footer>
+
+<a class="wa-btn" href="https://wa.me/96599887766?text=Hello%20Latifa%20Cafe!%20I'd%20like%20to%20make%20a%20reservation%20☕" target="_blank">💬</a>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('solid',scrollY>60);});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const MD={
+  coffee:[
+    {img:'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80',name:'Saffron Latte',desc:'Double espresso, steamed milk, Kuwaiti saffron threads, honey drizzle',price:'2.200 KD',tag:'sig'},
+    {img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&q=80',name:'Classic Cappuccino',desc:'Rich espresso, velvety micro-foam milk, dusted with premium cocoa powder',price:'1.600 KD',tag:'pop'},
+    {img:'https://images.unsplash.com/photo-1575047756420-41050a2db6b5?w=500&q=80',name:'Rose Cold Brew',desc:'18-hour cold brew, rose syrup, oat milk, freeze-dried rose petals',price:'2.500 KD',tag:'new'},
+    {img:'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&q=80',name:'Cardamom Flat White',desc:'Ristretto shots, silky steamed milk, ground cardamom, gold dusting',price:'1.900 KD',tag:'sig'},
+  ],
+  tea:[
+    {img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&q=80',name:'Rose Karak Chai',desc:'Spiced black tea, evaporated milk, rose water, cardamom, saffron',price:'1.500 KD',tag:'sig'},
+    {img:'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=500&q=80',name:'Moroccan Mint Tea',desc:'Fresh spearmint, green tea, cane sugar, served in traditional glass',price:'1.200 KD',tag:'pop'},
+    {img:'https://images.unsplash.com/photo-1563822249366-3efb23b8e0c9?w=500&q=80',name:'Hibiscus Lemonade',desc:'Dried hibiscus, fresh lemon, rose water, honey, chilled sparkling water',price:'1.800 KD',tag:'new'},
+    {img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&q=80',name:'Turmeric Golden Milk',desc:'Warm oat milk, turmeric, ginger, black pepper, cinnamon, honey',price:'2.000 KD',tag:'sp'},
+  ],
+  food:[
+    {img:'https://images.unsplash.com/photo-1612182560086-3b06fa1b28ee?w=500&q=80',name:'Date & Walnut Cake',desc:'Freshly baked every morning, warm date cake, caramel sauce, vanilla ice cream',price:'2.200 KD',tag:'sig'},
+    {img:'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&q=80',name:'Zaatar Croissant',desc:'Buttery flaky croissant, zaatar herb blend, creamy labneh, olive oil',price:'1.400 KD',tag:'pop'},
+    {img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80',name:'Kunafa Waffle',desc:'Crispy waffle, shredded kunafa, ashta cream, orange blossom syrup, pistachios',price:'2.800 KD',tag:'new'},
+    {img:'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&q=80',name:'French Toast',desc:'Thick brioche, cinnamon egg dip, caramelised banana, maple syrup, whipped cream',price:'2.500 KD',tag:'sp'},
+  ],
+  cold:[
+    {img:'https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=500&q=80',name:'Mango Passion Cooler',desc:'Fresh mango, passion fruit, coconut water, mint, crushed ice',price:'2.200 KD',tag:'pop'},
+    {img:'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=500&q=80',name:'Strawberry Matcha',desc:'Premium matcha, strawberry puree, oat milk, vanilla, iced',price:'2.500 KD',tag:'new'},
+    {img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&q=80',name:'Salted Caramel Frappe',desc:'Cold brew, salted caramel, blended ice, whipped cream, caramel drizzle',price:'2.800 KD',tag:'sig'},
+    {img:'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500&q=80',name:'Berry Lemonade Slush',desc:'Mixed berries, fresh lemon, elderflower, slush ice, mint garnish',price:'1.900 KD',tag:'sp'},
+  ],
+};
+
+const tLabel={sig:'✦ Signature',new:'★ New',pop:'🔥 Popular',sp:'⭐ Special'};
+const tClass={sig:'sig',new:'new',pop:'pop',sp:'sp'};
+
+function switchTab(btn,cat){
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderMenu(cat);
+}
+
+function renderMenu(cat){
+  const g=document.getElementById('mgrid');
+  g.innerHTML='';
+  MD[cat].forEach(item=>{
+    g.innerHTML+=`<div class="mc">
+      <div class="mc-img">
+        <img src="${item.img}" alt="${item.name}" loading="lazy">
+        <div class="mc-tag ${tClass[item.tag]}">${tLabel[item.tag]}</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">${item.name}</div>
+        <div class="mc-desc">${item.desc}</div>
+        <div class="mc-foot">
+          <div class="mc-price">${item.price}</div>
+          <button class="mc-btn" onclick="window.open('https://wa.me/96599887766?text=Hello! I want to order ${encodeURIComponent(item.name)} ☕','_blank')">Order 💬</button>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+renderMenu('coffee');
+</script>
+</body>
+</html>

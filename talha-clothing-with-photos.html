@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talha — Pakistani Women's Clothing | Stitched & Unstitched</title>
+<meta name="description" content="Talha — Premium Pakistani women's clothing. Stitched and unstitched collections. Lawn, chiffon, silk, khaddar. Delivering all across Pakistan.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:  #b5485a;
+  --deep:  #7a1f30;
+  --gold:  #c9974a;
+  --cream: #fdf6ee;
+  --warm:  #f5ece0;
+  --dark:  #1e0f13;
+  --text:  #3d1f26;
+  --gray:  #8c7070;
+  --white: #ffffff;
+  --border:rgba(181,72,90,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+
+/* ANNOUNCE */
+.announce{background:var(--deep);color:rgba(255,255,255,0.9);text-align:center;padding:0.55rem 1rem;font-size:0.78rem;letter-spacing:1.2px;font-weight:500;}
+.announce span{color:var(--gold);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:999;background:rgba(253,246,238,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 5%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--deep);letter-spacing:2px;}
+.nav-logo span{color:var(--gold);}
+.nav-logo sub{font-size:0.5rem;letter-spacing:3px;color:var(--gray);font-family:'Nunito',sans-serif;display:block;text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.82rem;font-weight:700;color:var(--text);letter-spacing:0.5px;transition:color 0.2s;text-transform:uppercase;}
+.nav-links a:hover{color:var(--rose);}
+.btn-nav{background:var(--rose);color:white;padding:0.6rem 1.4rem;border-radius:50px;font-size:0.82rem;font-weight:700;transition:all 0.3s;box-shadow:0 4px 16px rgba(181,72,90,0.25);}
+.btn-nav:hover{background:var(--deep);transform:translateY(-1px);}
+
+/* HERO */
+.hero{min-height:95vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{background:linear-gradient(135deg,#1e0f13,#4a1020);display:flex;flex-direction:column;justify-content:center;padding:5rem;position:relative;z-index:2;}
+.hero-left::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(201,151,74,0.03) 0,rgba(201,151,74,0.03) 1px,transparent 1px,transparent 22px),repeating-linear-gradient(-45deg,rgba(201,151,74,0.03) 0,rgba(201,151,74,0.03) 1px,transparent 1px,transparent 22px);}
+.hero-content{position:relative;z-index:2;animation:up 0.9s ease both;}
+@keyframes up{from{opacity:0;transform:translateY(35px);}to{opacity:1;transform:translateY(0);}}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,151,74,0.15);border:1px solid rgba(201,151,74,0.3);color:var(--gold);padding:0.4rem 1.1rem;border-radius:50px;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.8rem;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,4vw,4rem);font-weight:700;color:white;line-height:1.1;margin-bottom:1.2rem;}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero-desc{font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.8;max-width:420px;margin-bottom:2.2rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-gold{background:var(--gold);color:var(--dark);padding:0.95rem 2rem;border-radius:50px;font-weight:700;font-size:0.9rem;transition:all 0.3s;box-shadow:0 6px 20px rgba(201,151,74,0.35);}
+.btn-gold:hover{background:#e0aa55;transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:white;padding:0.95rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.3s;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);}
+.hs-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);}
+.hs-l{font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+
+/* HERO RIGHT — image collage */
+.hero-right{position:relative;overflow:hidden;}
+.hero-main-img{width:100%;height:100%;object-fit:cover;}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(30,15,19,0.3) 0%,transparent 40%);}
+.hero-float{position:absolute;bottom:2rem;right:2rem;background:rgba(253,246,238,0.95);border-radius:16px;padding:1rem 1.2rem;display:flex;align-items:center;gap:0.8rem;box-shadow:0 8px 30px rgba(0,0,0,0.2);max-width:220px;animation:up 1.1s ease 0.3s both;}
+.hero-float-img{width:52px;height:52px;border-radius:10px;object-fit:cover;flex-shrink:0;overflow:hidden;}
+.hero-float-img img{width:100%;height:100%;object-fit:cover;}
+.hero-float-name{font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:var(--dark);}
+.hero-float-info{font-size:0.72rem;color:var(--gray);}
+.hero-float-price{font-size:0.88rem;color:var(--rose);font-weight:700;}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--gold);padding:0.8rem 0;overflow:hidden;}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.m-item{display:inline-flex;align-items:center;gap:0.6rem;padding:0 2rem;font-size:0.75rem;font-weight:800;color:var(--dark);letter-spacing:2px;text-transform:uppercase;}
+.m-dot{width:4px;height:4px;border-radius:50%;background:var(--deep);opacity:0.4;}
+
+/* SECTIONS */
+.section{padding:5rem 5%;}
+.section-alt{background:var(--warm);}
+.sec-label{display:inline-block;background:rgba(181,72,90,0.08);color:var(--rose);padding:0.3rem 1rem;border-radius:50px;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.8rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:0.7rem;}
+.sec-title em{color:var(--rose);font-style:italic;}
+.sec-sub{color:var(--gray);font-size:0.9rem;line-height:1.7;max-width:500px;}
+.sec-head{margin-bottom:3rem;}
+
+/* CATEGORIES with real images */
+.cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.cat-card{border-radius:22px;overflow:hidden;position:relative;aspect-ratio:3/4;cursor:pointer;}
+.cat-img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+.cat-card:hover .cat-img{transform:scale(1.07);}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,5,10,0.88) 0%,rgba(20,5,10,0.05) 55%);}
+.cat-info{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 1.5rem;}
+.cat-badge{display:inline-block;background:var(--gold);color:var(--dark);padding:0.2rem 0.7rem;border-radius:50px;font-size:0.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.6rem;}
+.cat-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:white;margin-bottom:0.3rem;}
+.cat-sub{font-size:0.75rem;color:rgba(255,255,255,0.55);}
+.cat-cta{display:inline-flex;align-items:center;gap:0.5rem;color:var(--gold);font-size:0.78rem;font-weight:700;margin-top:0.8rem;transition:gap 0.2s;}
+.cat-card:hover .cat-cta{gap:0.9rem;}
+
+/* PRODUCTS */
+.prods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.8rem;}
+.prod-card{background:white;border-radius:20px;overflow:hidden;transition:all 0.3s;box-shadow:0 2px 12px rgba(122,31,48,0.05);}
+.prod-card:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(122,31,48,0.13);}
+.prod-img-wrap{height:300px;position:relative;overflow:hidden;}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06);}
+.prod-badge{position:absolute;top:1rem;left:1rem;padding:0.22rem 0.7rem;border-radius:50px;font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+.badge-new{background:var(--deep);color:white;}
+.badge-sale{background:#c0392b;color:white;}
+.badge-stitched{background:var(--gold);color:var(--dark);}
+.prod-wish{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all 0.2s;border:none;}
+.prod-wish:hover{background:var(--rose);color:white;}
+.prod-body{padding:1.2rem 1.3rem;}
+.prod-cat{font-size:0.68rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.prod-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:0.5rem;line-height:1.3;}
+.price-row{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;}
+.price{font-size:1rem;font-weight:700;color:var(--rose);}
+.old-price{font-size:0.8rem;color:var(--gray);text-decoration:line-through;}
+.prod-colors{display:flex;gap:0.4rem;margin-bottom:1rem;}
+.cdot{width:15px;height:15px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s;}
+.cdot:hover{border-color:var(--rose);}
+.btn-wa-order{width:100%;background:var(--deep);color:white;border:none;padding:0.75rem;border-radius:12px;font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.3px;}
+.btn-wa-order:hover{background:var(--rose);}
+
+/* FABRIC GUIDE */
+.fab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.2rem;}
+.fab-card{border-radius:16px;overflow:hidden;background:white;border:1.5px solid var(--border);transition:all 0.3s;}
+.fab-card:hover{border-color:var(--rose);transform:translateY(-4px);box-shadow:0 10px 28px rgba(122,31,48,0.1);}
+.fab-img{height:110px;overflow:hidden;}
+.fab-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.fab-card:hover .fab-img img{transform:scale(1.08);}
+.fab-body{padding:1rem;}
+.fab-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.fab-desc{font-size:0.75rem;color:var(--gray);line-height:1.5;}
+.fab-tag{display:inline-block;margin-top:0.5rem;background:rgba(181,72,90,0.08);color:var(--rose);padding:0.15rem 0.6rem;border-radius:50px;font-size:0.65rem;font-weight:700;}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.3rem;}
+.why-card{background:white;border-radius:18px;padding:1.8rem 1.4rem;text-align:center;border:1.5px solid var(--border);transition:all 0.3s;}
+.why-card:hover{border-color:var(--rose);box-shadow:0 10px 28px rgba(181,72,90,0.08);transform:translateY(-3px);}
+.why-icon{font-size:2.4rem;margin-bottom:0.9rem;}
+.why-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.5rem;}
+.why-desc{font-size:0.8rem;color:var(--gray);line-height:1.6;}
+
+/* HOW TO ORDER */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;}
+.step{text-align:center;padding:1.5rem 1rem;}
+.step-n{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--deep));color:white;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 6px 20px rgba(122,31,48,0.25);}
+.step-t{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.4rem;}
+.step-d{font-size:0.8rem;color:var(--gray);line-height:1.6;}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.testi{background:white;border-radius:18px;padding:2rem;border:1.5px solid var(--border);position:relative;}
+.testi::before{content:'"';font-family:'Playfair Display',serif;font-size:5rem;color:var(--rose);opacity:0.12;position:absolute;top:-0.5rem;left:1.2rem;line-height:1;}
+.stars{color:var(--gold);font-size:0.88rem;margin-bottom:0.8rem;}
+.testi-txt{font-size:0.87rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1.2rem;}
+.testi-auth{display:flex;align-items:center;gap:0.8rem;}
+.testi-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--deep));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;}
+.testi-name{font-weight:700;font-size:0.85rem;color:var(--dark);}
+.testi-city{font-size:0.72rem;color:var(--gray);}
+
+/* CONTACT */
+.contact-sec{background:linear-gradient(135deg,#1e0f13,#3d1020);padding:5rem 5%;text-align:center;position:relative;overflow:hidden;}
+.contact-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 25% 50%,rgba(201,151,74,0.07),transparent 50%),radial-gradient(circle at 75% 50%,rgba(181,72,90,0.1),transparent 50%);}
+.contact-inner{position:relative;z-index:2;max-width:700px;margin:0 auto;}
+.contact-sec .sec-label{background:rgba(255,255,255,0.1);color:var(--gold);}
+.contact-sec .sec-title{color:white;}
+.contact-sec .sec-sub{color:rgba(255,255,255,0.5);margin:0 auto 2.5rem;}
+.c-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem;margin-bottom:2.5rem;}
+.c-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.3rem 1rem;text-align:center;transition:background 0.2s;}
+.c-card:hover{background:rgba(255,255,255,0.1);}
+.c-icon{font-size:1.8rem;margin-bottom:0.5rem;}
+.c-lbl{font-size:0.65rem;color:rgba(255,255,255,0.38);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;}
+.c-val{font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;}
+.order-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-wa{background:#25d366;color:white;padding:1rem 2.2rem;border-radius:50px;font-weight:700;font-size:0.92rem;display:inline-flex;align-items:center;gap:0.6rem;transition:all 0.3s;box-shadow:0 6px 20px rgba(37,211,102,0.3);}
+.btn-wa:hover{background:#1da851;transform:translateY(-2px);}
+.btn-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1rem 2.2rem;border-radius:50px;font-weight:700;font-size:0.92rem;display:inline-flex;align-items:center;gap:0.6rem;transition:all 0.3s;}
+.btn-ig:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(220,39,67,0.3);}
+
+/* FOOTER */
+footer{background:#0f060a;color:rgba(255,255,255,0.35);padding:2rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.f-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold);}
+footer p{font-size:0.76rem;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:5rem 6% 4rem;}
+  .cats-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:580px){
+  .cats-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  🌸 New Summer Lawn Collection Arrived &nbsp;|&nbsp; <span>Free Delivery</span> Above Rs.2000 &nbsp;|&nbsp; 🇵🇰 All Pakistan Delivery
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Talha<span>.</span><sub>Women's Collection</sub></div>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#fabrics">Fabrics</a></li>
+    <li><a href="#order">How to Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/92XXXXXXXXXX" class="btn-nav">🛒 Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="live-dot"></div> New Collection 2025</div>
+      <h1>Elegance in<br>Every <em>Thread</em></h1>
+      <p class="hero-desc">Discover Talha's exquisite collection of stitched and unstitched Pakistani women's clothing — from everyday lawn to luxurious bridal silk. Crafted with love, delivered to your door across Pakistan.</p>
+      <div class="hero-btns">
+        <a href="#shop" class="btn-gold">🌸 Shop Now</a>
+        <a href="#contact" class="btn-ghost">📞 Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-n">500+</div><div class="hs-l">Happy Customers</div></div>
+        <div><div class="hs-n">200+</div><div class="hs-l">Designs</div></div>
+        <div><div class="hs-n">🇵🇰</div><div class="hs-l">All Pakistan</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-main-img"
+      src="https://stilento.com/cdn/shop/files/Ramsha-Unstitched-Pure-Pakistani-Lawn-Suit-Set-for-Women---Stilento_1.jpg"
+      alt="Pakistani lawn suit collection"
+      onerror="this.src='https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=800&q=80'">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-float">
+      <div class="hero-float-img">
+        <img src="https://essentialclothing.pk/cdn/shop/files/EC-1282_1024x1024.jpg"
+          alt="Stitched kurta"
+          onerror="this.style.background='linear-gradient(135deg,#fce4ec,#e91e63)'">
+      </div>
+      <div>
+        <div class="hero-float-name">Embroidered Kurti</div>
+        <div class="hero-float-info">Stitched · Ready to Wear</div>
+        <div class="hero-float-price">Rs. 2,100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="m-item"><span class="m-dot"></span>Premium Lawn</span>
+    <span class="m-item"><span class="m-dot"></span>Chiffon Suits</span>
+    <span class="m-item"><span class="m-dot"></span>Embroidered Kurtis</span>
+    <span class="m-item"><span class="m-dot"></span>Bridal Collection</span>
+    <span class="m-item"><span class="m-dot"></span>Winter Khaddar</span>
+    <span class="m-item"><span class="m-dot"></span>Party Wear</span>
+    <span class="m-item"><span class="m-dot"></span>Custom Stitching</span>
+    <span class="m-item"><span class="m-dot"></span>Fast Delivery</span>
+    <span class="m-item"><span class="m-dot"></span>Premium Lawn</span>
+    <span class="m-item"><span class="m-dot"></span>Chiffon Suits</span>
+    <span class="m-item"><span class="m-dot"></span>Embroidered Kurtis</span>
+    <span class="m-item"><span class="m-dot"></span>Bridal Collection</span>
+    <span class="m-item"><span class="m-dot"></span>Winter Khaddar</span>
+    <span class="m-item"><span class="m-dot"></span>Party Wear</span>
+    <span class="m-item"><span class="m-dot"></span>Custom Stitching</span>
+    <span class="m-item"><span class="m-dot"></span>Fast Delivery</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="section" id="collections">
+  <div class="sec-head">
+    <div class="sec-label">Browse</div>
+    <h2 class="sec-title">Our <em>Collections</em></h2>
+    <p class="sec-sub">From everyday casual to bridal luxury — explore our curated categories for every Pakistani woman</p>
+  </div>
+  <div class="cats-grid">
+
+    <div class="cat-card">
+      <img class="cat-img"
+        src="https://essentialclothing.pk/cdn/shop/files/EC-1282_1024x1024.jpg"
+        alt="Stitched Pakistani Women Clothes"
+        onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#3f51b5)'">
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-badge">Bestseller</div>
+        <div class="cat-name">Stitched Collection</div>
+        <div class="cat-sub">Ready to wear · All sizes</div>
+        <div class="cat-cta">Shop Now →</div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <img class="cat-img"
+        src="https://stilento.com/cdn/shop/files/Ramsha-Unstitched-Pure-Pakistani-Lawn-Suit-Set-for-Women---Stilento_1.jpg"
+        alt="Unstitched Pakistani Lawn Suits"
+        onerror="this.style.background='linear-gradient(135deg,#fce4ec,#e91e63)'">
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-badge">New In</div>
+        <div class="cat-name">Unstitched Suits</div>
+        <div class="cat-sub">2 & 3 piece · Customize your fit</div>
+        <div class="cat-cta">Shop Now →</div>
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <img class="cat-img"
+        src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=80"
+        alt="Pakistani Bridal Formal Wear"
+        onerror="this.style.background='linear-gradient(135deg,#fff8e1,#ff6f00)'">
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <div class="cat-badge">Premium</div>
+        <div class="cat-name">Bridal & Formal</div>
+        <div class="cat-sub">Luxury silk · Embroidered</div>
+        <div class="cat-cta">Shop Now →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section section-alt" id="shop">
+  <div class="sec-head">
+    <div class="sec-label">Featured</div>
+    <h2 class="sec-title">Latest <em>Arrivals</em></h2>
+    <p class="sec-sub">Handpicked new designs — order via WhatsApp, we stitch to your exact size!</p>
+  </div>
+  <div class="prods-grid">
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://stilento.com/cdn/shop/files/Ramsha-Unstitched-Pure-Pakistani-Lawn-Suit-Set-for-Women---Stilento_1.jpg"
+          alt="Rose Garden Lawn Suit Pakistani"
+          onerror="this.style.background='linear-gradient(135deg,#fce4ec,#e91e63,#880e4f)'">
+        <div class="prod-badge badge-new">New</div>
+        <button class="prod-wish">🤍</button>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">Unstitched · 3 Piece Lawn</div>
+        <div class="prod-name">Rose Garden Lawn Suit</div>
+        <div class="price-row"><span class="price">Rs. 1,850</span><span class="old-price">Rs. 2,200</span></div>
+        <div class="prod-colors">
+          <div class="cdot" style="background:#e91e63;"></div>
+          <div class="cdot" style="background:#9c27b0;"></div>
+          <div class="cdot" style="background:#ff9800;"></div>
+        </div>
+        <button class="btn-wa-order" onclick="orderWA('Rose Garden Lawn Suit','Rs. 1,850')">💬 Order on WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://essentialclothing.pk/cdn/shop/files/EC-1282_1024x1024.jpg"
+          alt="Indigo Embroidered Kurti Stitched Pakistan"
+          onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#3f51b5)'">
+        <div class="prod-badge badge-stitched">Stitched</div>
+        <button class="prod-wish">🤍</button>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">Stitched · Ready to Wear</div>
+        <div class="prod-name">Indigo Embroidered Kurti</div>
+        <div class="price-row"><span class="price">Rs. 2,100</span></div>
+        <div class="prod-colors">
+          <div class="cdot" style="background:#3f51b5;"></div>
+          <div class="cdot" style="background:#009688;"></div>
+          <div class="cdot" style="background:#607d8b;"></div>
+        </div>
+        <button class="btn-wa-order" onclick="orderWA('Indigo Embroidered Kurti','Rs. 2,100')">💬 Order on WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&q=80"
+          alt="Pakistani Bridal Silk Suit Gold"
+          onerror="this.style.background='linear-gradient(135deg,#fff8e1,#ffd54f,#ff6f00)'">
+        <div class="prod-badge badge-sale">Sale</div>
+        <button class="prod-wish">🤍</button>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">Unstitched · Premium Silk</div>
+        <div class="prod-name">Golden Bridal Silk Set</div>
+        <div class="price-row"><span class="price">Rs. 3,999</span><span class="old-price">Rs. 5,500</span></div>
+        <div class="prod-colors">
+          <div class="cdot" style="background:#ffd54f;"></div>
+          <div class="cdot" style="background:#ff6f00;"></div>
+          <div class="cdot" style="background:#b5485a;"></div>
+        </div>
+        <button class="btn-wa-order" onclick="orderWA('Golden Bridal Silk Set','Rs. 3,999')">💬 Order on WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=500&q=80"
+          alt="Pakistani Women Chiffon Party Suit"
+          onerror="this.style.background='linear-gradient(135deg,#f3e5f5,#ba68c8,#6a1b9a)'">
+        <div class="prod-badge badge-new">New</div>
+        <button class="prod-wish">🤍</button>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">Unstitched · Chiffon 3 Piece</div>
+        <div class="prod-name">Lavender Chiffon Suit</div>
+        <div class="price-row"><span class="price">Rs. 2,400</span><span class="old-price">Rs. 3,000</span></div>
+        <div class="prod-colors">
+          <div class="cdot" style="background:#ba68c8;"></div>
+          <div class="cdot" style="background:#f06292;"></div>
+          <div class="cdot" style="background:#4dd0e1;"></div>
+        </div>
+        <button class="btn-wa-order" onclick="orderWA('Lavender Chiffon Suit','Rs. 2,400')">💬 Order on WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://cdn.sapphireonline.pk/media/catalog/product/u/3/u3_cl22v8_10_1_s.jpg"
+          alt="Pakistani Khaddar Winter Suit Women"
+          onerror="this.style.background='linear-gradient(135deg,#efebe9,#a1887f,#4e342e)'">
+        <div class="prod-badge badge-stitched">Winter</div>
+        <button class="prod-wish">🤍</button>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">Stitched · Khaddar Winter</div>
+        <div class="prod-name">Mocha Khaddar Suit</div>
+        <div class="price-row"><span class="price">Rs. 2,650</span></div>
+        <div class="prod-colors">
+          <div class="cdot" style="background:#a1887f;"></div>
+          <div class="cdot" style="background:#78909c;"></div>
+          <div class="cdot" style="background:#455a64;"></div>
+        </div>
+        <button class="btn-wa-order" onclick="orderWA('Mocha Khaddar Suit','Rs. 2,650')">💬 Order on WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://stilento.com/cdn/shop/files/Women-s-Unstitched-Pakistani-Lawn-Suit-Material-with-Embroidery---Stilento_1.jpg"
+          alt="Pakistani Lawn Embroidery Unstitched Suit"
+          onerror="this.style.background='linear-gradient(135deg,#e8f5e9,#66bb6a,#1b5e20)'">
+        <div class="prod-badge badge-sale">Sale</div>
+        <button class="prod-wish">🤍</button>
+      </div>
+      <div class="prod-body">
+        <div class="prod-cat">Unstitched · Embroidered Lawn</div>
+        <div class="prod-name">Emerald Embroidery Suit</div>
+        <div class="price-row"><span class="price">Rs. 1,650</span><span class="old-price">Rs. 2,100</span></div>
+        <div class="prod-colors">
+          <div class="cdot" style="background:#66bb6a;"></div>
+          <div class="cdot" style="background:#26a69a;"></div>
+          <div class="cdot" style="background:#42a5f5;"></div>
+        </div>
+        <button class="btn-wa-order" onclick="orderWA('Emerald Embroidery Suit','Rs. 1,650')">💬 Order on WhatsApp</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FABRICS -->
+<section class="section" id="fabrics">
+  <div class="sec-head">
+    <div class="sec-label">Materials</div>
+    <h2 class="sec-title">Our <em>Fabrics</em></h2>
+    <p class="sec-sub">We use the finest Pakistani fabrics — each chosen for quality, comfort and beauty</p>
+  </div>
+  <div class="fab-grid">
+    <div class="fab-card">
+      <div class="fab-img">
+        <img src="https://stilento.com/cdn/shop/files/Ramsha-Unstitched-Pure-Pakistani-Lawn-Suit-Set-for-Women---Stilento_1.jpg"
+          alt="Lawn fabric Pakistan"
+          onerror="this.style.background='linear-gradient(135deg,#e8f5e9,#81c784)'">
+      </div>
+      <div class="fab-body">
+        <div class="fab-name">Lawn</div>
+        <div class="fab-desc">Light breathable cotton. Perfect for hot Pakistani summers. Most popular fabric.</div>
+        <span class="fab-tag">☀️ Summer</span>
+      </div>
+    </div>
+    <div class="fab-card">
+      <div class="fab-img">
+        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&q=80"
+          alt="Chiffon fabric Pakistani suit"
+          onerror="this.style.background='linear-gradient(135deg,#fce4ec,#f48fb1)'">
+      </div>
+      <div class="fab-body">
+        <div class="fab-name">Chiffon</div>
+        <div class="fab-desc">Elegant, flowy fabric ideal for dupattas and formal party wear.</div>
+        <span class="fab-tag">🌸 All Season</span>
+      </div>
+    </div>
+    <div class="fab-card">
+      <div class="fab-img">
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80"
+          alt="Silk bridal Pakistani fabric"
+          onerror="this.style.background='linear-gradient(135deg,#fff8e1,#ffd54f)'">
+      </div>
+      <div class="fab-body">
+        <div class="fab-name">Silk</div>
+        <div class="fab-desc">Luxurious premium fabric for bridal and formal occasions. Rich, smooth texture.</div>
+        <span class="fab-tag">💍 Bridal</span>
+      </div>
+    </div>
+    <div class="fab-card">
+      <div class="fab-img">
+        <img src="https://cdn.sapphireonline.pk/media/catalog/product/u/3/u3_cl22v8_10_1_s.jpg"
+          alt="Khaddar winter fabric Pakistan"
+          onerror="this.style.background='linear-gradient(135deg,#efebe9,#bcaaa4)'">
+      </div>
+      <div class="fab-body">
+        <div class="fab-name">Khaddar</div>
+        <div class="fab-desc">Warm cozy hand-woven fabric. Traditional Pakistani winter staple.</div>
+        <span class="fab-tag">❄️ Winter</span>
+      </div>
+    </div>
+    <div class="fab-card">
+      <div class="fab-img">
+        <img src="https://stilento.com/cdn/shop/files/Women-s-Unstitched-Pakistani-Lawn-Suit-Material-with-Embroidery---Stilento_1.jpg"
+          alt="Embroidered fabric Pakistan"
+          onerror="this.style.background='linear-gradient(135deg,#e8eaf6,#9fa8da)'">
+      </div>
+      <div class="fab-body">
+        <div class="fab-name">Embroidered</div>
+        <div class="fab-desc">Beautifully embroidered fabric for special occasions and festive wear.</div>
+        <span class="fab-tag">✨ Festive</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section-alt">
+  <div class="sec-head">
+    <div class="sec-label">Why Talha</div>
+    <h2 class="sec-title">Why Customers <em>Love Us</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">🪡</div><div class="why-title">Premium Quality</div><div class="why-desc">Every fabric is hand-selected. We never compromise on the material we offer our customers.</div></div>
+    <div class="why-card"><div class="why-icon">✂️</div><div class="why-title">Custom Stitching</div><div class="why-desc">Order unstitched and get it stitched to your exact measurements. Perfect fit every time!</div></div>
+    <div class="why-card"><div class="why-icon">🚚</div><div class="why-title">All Pakistan Delivery</div><div class="why-desc">We deliver to all cities — Lahore, Karachi, Islamabad, and everywhere in between.</div></div>
+    <div class="why-card"><div class="why-icon">💰</div><div class="why-title">Affordable Prices</div><div class="why-desc">Best prices in Pakistan. Every woman deserves beautiful clothing without breaking the budget.</div></div>
+    <div class="why-card"><div class="why-icon">💬</div><div class="why-title">Easy WhatsApp Order</div><div class="why-desc">Just send a WhatsApp message — no complicated apps needed. Simple and fast!</div></div>
+    <div class="why-card"><div class="why-icon">🔄</div><div class="why-title">Easy Returns</div><div class="why-desc">Not happy? We offer hassle-free returns and exchanges within 7 days of delivery.</div></div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section class="section" id="order">
+  <div class="sec-head">
+    <div class="sec-label">Simple Steps</div>
+    <h2 class="sec-title">How to <em>Order</em></h2>
+    <p class="sec-sub">Ordering from Talha is super easy — just 4 steps!</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><div class="step-t">Browse & Choose</div><div class="step-d">Browse our collection on this website or Instagram and pick your favourite design</div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-t">WhatsApp Us</div><div class="step-d">Send the design name or photo on WhatsApp. We confirm availability and price instantly</div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-t">Pay & Confirm</div><div class="step-d">Pay via EasyPaisa or JazzCash. We confirm your order and start processing immediately</div></div>
+    <div class="step"><div class="step-n">4</div><div class="step-t">Receive & Enjoy!</div><div class="step-d">We dispatch within 24 hours. Delivered to your door anywhere in Pakistan! 🇵🇰</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-alt">
+  <div class="sec-head">
+    <div class="sec-label">Reviews</div>
+    <h2 class="sec-title">What Our <em>Customers Say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testi-txt">"Ordered a lawn suit for Eid and it arrived in perfect condition! The fabric quality is amazing and colors are exactly like the photos. Highly recommend Talha!"</p>
+      <div class="testi-auth"><div class="testi-av">A</div><div><div class="testi-name">Amina Bibi</div><div class="testi-city">📍 Lahore</div></div></div>
+    </div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testi-txt">"Got my bridal suit from Talha and I was absolutely thrilled! The embroidery is so beautiful and the silk quality is premium. My whole family loved it!"</p>
+      <div class="testi-auth"><div class="testi-av">S</div><div><div class="testi-name">Sana Malik</div><div class="testi-city">📍 Karachi</div></div></div>
+    </div>
+    <div class="testi">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testi-txt">"Very fast delivery and excellent stitching! I ordered unstitched with custom stitching and it fits perfectly. Best clothing brand I have found online!"</p>
+      <div class="testi-auth"><div class="testi-av">F</div><div><div class="testi-name">Fatima Noor</div><div class="testi-city">📍 Islamabad</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="contact-inner">
+    <div class="sec-label">Get In Touch</div>
+    <h2 class="sec-title">Order Now or Ask Anything</h2>
+    <p class="sec-sub">Available on WhatsApp 9 AM – 10 PM daily. Message us to place your order!</p>
+    <div class="c-cards">
+      <div class="c-card"><div class="c-icon">📱</div><div class="c-lbl">WhatsApp</div><div class="c-val">+92 XXX XXXXXXX</div></div>
+      <div class="c-card"><div class="c-icon">📸</div><div class="c-lbl">Instagram</div><div class="c-val">@talha.clothing</div></div>
+      <div class="c-card"><div class="c-icon">💳</div><div class="c-lbl">Payment</div><div class="c-val">EasyPaisa · JazzCash</div></div>
+      <div class="c-card"><div class="c-icon">🚚</div><div class="c-lbl">Delivery</div><div class="c-val">All Pakistan</div></div>
+    </div>
+    <div class="order-btns">
+      <a href="https://wa.me/92XXXXXXXXXX?text=Assalam%20o%20Alaikum!%20I%20want%20to%20place%20an%20order%20from%20Talha%20Clothing." class="btn-wa" target="_blank">💬 Order on WhatsApp</a>
+      <a href="https://instagram.com/talha.clothing" class="btn-ig" target="_blank">📸 Follow on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Talha.</div>
+  <p>© 2025 Talha Women's Collection — Stitched & Unstitched Pakistani Clothing | All Pakistan Delivery</p>
+  <p>Made with ❤️ in Pakistan 🇵🇰</p>
+</footer>
+
+<script>
+function orderWA(name, price) {
+  const msg = encodeURIComponent(`Assalam o Alaikum! 🌸\n\nI want to order:\n\n👗 *${name}*\n💰 Price: ${price}\n\nPlease confirm availability. JazakAllah!`);
+  window.open(`https://wa.me/92XXXXXXXXXX?text=${msg}`, '_blank');
+}
+</script>
+</body>
+</html>

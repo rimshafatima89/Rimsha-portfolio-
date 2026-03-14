@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZEST — Fresh Juice Bar Kuwait</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --lime:    #A8E063;
+  --lime2:   #D4F589;
+  --orange:  #FF6B35;
+  --orange2: #FF9A5C;
+  --pink:    #FF4D8D;
+  --pink2:   #FF85B3;
+  --yellow:  #FFD93D;
+  --teal:    #00C9A7;
+  --purple:  #845EC2;
+  --white:   #FFFFFF;
+  --cream:   #FFFDF5;
+  --dark:    #1A1A2E;
+  --dark2:   #16213E;
+  --text:    #2D2D2D;
+  --muted:   #888;
+}
+
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ══ BLOBS ══ */
+.blob{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;opacity:.12;}
+.blob1{width:500px;height:500px;background:var(--lime);top:-100px;left:-100px;animation:blobMove1 12s ease infinite;}
+.blob2{width:400px;height:400px;background:var(--pink);top:30%;right:-100px;animation:blobMove2 15s ease infinite;}
+.blob3{width:350px;height:350px;background:var(--orange);bottom:10%;left:20%;animation:blobMove3 10s ease infinite;}
+
+@keyframes blobMove1{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,30px) scale(1.1);}}
+@keyframes blobMove2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-30px,40px) scale(1.08);}}
+@keyframes blobMove3{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(20px,-30px) scale(1.05);}}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;width:100%;z-index:500;padding:1rem 6%;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav.solid{background:rgba(255,253,245,.95);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(0,0,0,.08);}
+.nav-logo{font-family:'Righteous',cursive;font-size:2rem;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.82rem;font-weight:700;color:var(--text);text-decoration:none;transition:color .3s;letter-spacing:.5px;}
+.nav-links a:hover{color:var(--orange);}
+.nav-order{background:linear-gradient(135deg,var(--orange),var(--pink));color:white;padding:.55rem 1.6rem;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;cursor:pointer;box-shadow:0 4px 20px rgba(255,107,53,.35);transition:all .3s;letter-spacing:.5px;}
+.nav-order:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,53,.45);}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 6% 4rem;position:relative;overflow:hidden;}
+
+/* Big fruit emojis floating */
+.fruit{position:absolute;font-size:4rem;pointer-events:none;animation:floatFruit linear infinite;opacity:.15;}
+.fruit:nth-child(1){left:5%;top:20%;font-size:5rem;animation-duration:8s;animation-delay:0s;}
+.fruit:nth-child(2){left:15%;top:70%;font-size:3rem;animation-duration:10s;animation-delay:2s;}
+.fruit:nth-child(3){right:8%;top:15%;font-size:6rem;animation-duration:7s;animation-delay:1s;}
+.fruit:nth-child(4){right:20%;top:60%;font-size:4rem;animation-duration:9s;animation-delay:3s;}
+.fruit:nth-child(5){left:45%;top:10%;font-size:3.5rem;animation-duration:11s;animation-delay:0.5s;}
+.fruit:nth-child(6){left:30%;bottom:10%;font-size:4.5rem;animation-duration:8.5s;animation-delay:1.5s;}
+
+@keyframes floatFruit{0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-25px) rotate(10deg);}100%{transform:translateY(0) rotate(0deg);}}
+
+.hero-content{position:relative;z-index:2;max-width:600px;}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(168,224,99,.2),rgba(255,217,61,.2));border:2px solid rgba(168,224,99,.4);border-radius:50px;padding:.45rem 1.2rem;font-size:.75rem;font-weight:800;color:#5a7a1a;margin-bottom:1.8rem;letter-spacing:.5px;}
+.hero-badge span{background:var(--lime);border-radius:50px;padding:.1rem .6rem;color:#3a5a0a;font-size:.65rem;}
+
+.hero-h1{font-family:'Righteous',cursive;font-size:clamp(3.5rem,8vw,7rem);line-height:1;margin-bottom:1.2rem;letter-spacing:-1px;}
+.hero-h1 .w1{display:block;color:var(--dark);}
+.hero-h1 .w2{display:block;background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-h1 .w3{display:block;color:var(--teal);}
+
+.hero-p{font-size:1rem;font-weight:500;line-height:1.8;color:#555;max-width:440px;margin-bottom:2.5rem;}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-main{background:linear-gradient(135deg,var(--orange),var(--pink));color:white;padding:.9rem 2.2rem;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;cursor:pointer;box-shadow:0 6px 25px rgba(255,107,53,.4);transition:all .3s;text-decoration:none;display:inline-block;letter-spacing:.5px;}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,107,53,.5);}
+.btn-sec{background:white;color:var(--dark);padding:.9rem 2.2rem;border:2px solid rgba(0,0,0,.1);border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-sec:hover{border-color:var(--orange);color:var(--orange);}
+
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.hstat{text-align:center;}
+.hstat-n{font-family:'Righteous',cursive;font-size:2rem;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hstat-l{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+
+/* Hero image side */
+.hero-visual{position:absolute;right:4%;top:50%;transform:translateY(-50%);width:42%;max-width:520px;z-index:2;}
+.hero-visual img{width:100%;border-radius:30px;box-shadow:0 30px 80px rgba(255,107,53,.25);animation:heroFloat 4s ease infinite;}
+
+@keyframes heroFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+/* Floating card on hero */
+.hero-card{position:absolute;bottom:15%;right:3%;background:white;border-radius:20px;padding:1rem 1.3rem;box-shadow:0 10px 40px rgba(0,0,0,.12);z-index:3;animation:heroFloat 5s ease infinite reverse;display:flex;align-items:center;gap:.8rem;}
+.hcard-icon{font-size:2rem;}
+.hcard-title{font-weight:800;font-size:.85rem;color:var(--dark);}
+.hcard-sub{font-size:.7rem;color:var(--muted);}
+
+/* ══ MARQUEE ══ */
+.marquee-wrap{background:linear-gradient(135deg,var(--orange),var(--pink));padding:.65rem 0;overflow:hidden;display:flex;}
+.marquee-track{display:flex;gap:2.5rem;animation:marquee 15s linear infinite;white-space:nowrap;}
+.m-item{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:white;display:flex;align-items:center;gap:1rem;}
+.m-dot{width:6px;height:6px;background:rgba(255,255,255,.5);border-radius:50%;}
+
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ══ SECTION SHARED ══ */
+section{padding:6rem 6%;position:relative;z-index:1;}
+.sec-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem;}
+.sec-tag .dot{width:8px;height:8px;border-radius:50%;}
+.sec-h{font-family:'Righteous',cursive;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin-bottom:1rem;}
+.sec-h em{font-style:italic;}
+
+/* ══ WHY US ══ */
+.why{background:white;}
+.why-header{text-align:center;margin-bottom:4rem;}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;}
+.why-card{border-radius:24px;padding:2rem;text-align:center;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+.why-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.1);}
+.why-card:nth-child(1){background:linear-gradient(135deg,#FFF3E0,#FFE0B2);}
+.why-card:nth-child(2){background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}
+.why-card:nth-child(3){background:linear-gradient(135deg,#FCE4EC,#F8BBD9);}
+.why-card:nth-child(4){background:linear-gradient(135deg,#E3F2FD,#BBDEFB);}
+.why-icon{font-size:3rem;margin-bottom:1rem;display:block;}
+.why-title{font-family:'Righteous',cursive;font-size:1.1rem;margin-bottom:.5rem;color:var(--dark);}
+.why-desc{font-size:.82rem;font-weight:500;color:#666;line-height:1.7;}
+
+/* ══ MENU ══ */
+.menu-sec{background:var(--cream);}
+.menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;}
+.menu-cats{display:flex;gap:.6rem;flex-wrap:wrap;}
+.mcat{padding:.5rem 1.3rem;border-radius:50px;border:2px solid rgba(0,0,0,.1);background:white;font-weight:700;font-size:.75rem;cursor:pointer;transition:all .3s;color:var(--text);}
+.mcat.on{background:linear-gradient(135deg,var(--orange),var(--pink));border-color:transparent;color:white;box-shadow:0 4px 20px rgba(255,107,53,.35);}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;}
+.menu-card{background:white;border-radius:24px;overflow:hidden;transition:all .35s;box-shadow:0 4px 20px rgba(0,0,0,.06);}
+.menu-card:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.12);}
+.mc-img{height:180px;position:relative;overflow:hidden;}
+.mc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.menu-card:hover .mc-img img{transform:scale(1.08);}
+.mc-badge{position:absolute;top:.8rem;left:.8rem;padding:.25rem .75rem;border-radius:50px;font-size:.62rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+.mc-badge.fresh{background:var(--lime2);color:#3a5a0a;}
+.mc-badge.hot{background:#FFD93D;color:#7a5000;}
+.mc-badge.new{background:var(--pink2);color:#7a0040;}
+.mc-badge.special{background:#B5EAD7;color:#1a5a40;}
+.mc-body{padding:1.2rem;}
+.mc-name{font-family:'Righteous',cursive;font-size:1.05rem;color:var(--dark);margin-bottom:.35rem;}
+.mc-desc{font-size:.77rem;color:var(--muted);line-height:1.6;margin-bottom:.9rem;}
+.mc-footer{display:flex;justify-content:space-between;align-items:center;}
+.mc-price{font-family:'Righteous',cursive;font-size:1.1rem;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.mc-order{background:linear-gradient(135deg,var(--lime),var(--teal));color:white;border:none;border-radius:50px;padding:.4rem 1rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;cursor:pointer;transition:all .3s;}
+.mc-order:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(0,201,167,.4);}
+
+/* ══ SPECIALS BANNER ══ */
+.specials{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:5rem 6%;text-align:center;position:relative;overflow:hidden;}
+.specials::before{content:'🍊🍋🥝🍓🥭🍍';position:absolute;font-size:8rem;opacity:.05;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:2rem;}
+.specials .sec-h{color:white;}
+.specials .sec-h em{background:linear-gradient(135deg,var(--yellow),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.specials p{color:rgba(255,255,255,.65);font-size:.92rem;font-weight:500;max-width:500px;margin:0 auto 2.5rem;}
+.specials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:0 auto;}
+.special-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:2rem 1.5rem;transition:all .3s;backdrop-filter:blur(10px);}
+.special-card:hover{background:rgba(255,255,255,.12);transform:translateY(-5px);}
+.special-emoji{font-size:3rem;display:block;margin-bottom:1rem;}
+.special-name{font-family:'Righteous',cursive;font-size:1rem;color:white;margin-bottom:.4rem;}
+.special-desc{font-size:.75rem;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:1rem;}
+.special-price{font-family:'Righteous',cursive;font-size:1.3rem;background:linear-gradient(135deg,var(--yellow),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+/* ══ GALLERY ══ */
+.gallery-sec{background:white;}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:12px;margin-top:3rem;}
+.g-item{border-radius:20px;overflow:hidden;position:relative;}
+.g-item:first-child{grid-column:span 2;grid-row:span 2;}
+.g-item:nth-child(2){grid-column:span 2;}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;}
+.g-item:hover img{transform:scale(1.07);filter:brightness(1.1) saturate(1.2);}
+.g-item-label{position:absolute;bottom:.8rem;left:.8rem;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-radius:50px;padding:.3rem .9rem;font-size:.65rem;font-weight:800;color:var(--dark);}
+
+/* ══ TESTIMONIALS ══ */
+.reviews{background:var(--cream);}
+.rev-header{text-align:center;margin-bottom:3.5rem;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.rev-card{background:white;border-radius:24px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s;}
+.rev-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.1);}
+.rev-card:nth-child(2){background:linear-gradient(135deg,var(--orange),var(--pink));color:white;}
+.rev-card:nth-child(2) .rev-text{color:rgba(255,255,255,.9);}
+.rev-card:nth-child(2) .rev-name{color:white;}
+.rev-card:nth-child(2) .rev-loc{color:rgba(255,255,255,.7);}
+.rev-stars{font-size:.85rem;letter-spacing:2px;color:var(--yellow);margin-bottom:1rem;}
+.rev-card:nth-child(2) .rev-stars{color:var(--yellow);}
+.rev-text{font-size:.85rem;font-weight:500;line-height:1.85;color:#555;margin-bottom:1.5rem;}
+.rev-footer{display:flex;align-items:center;gap:.9rem;}
+.rev-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Righteous',cursive;font-size:1.1rem;color:white;flex-shrink:0;}
+.av1{background:linear-gradient(135deg,var(--orange),var(--yellow));}
+.av2{background:rgba(255,255,255,.3);}
+.av3{background:linear-gradient(135deg,var(--teal),var(--lime));}
+.rev-name{font-weight:800;font-size:.85rem;color:var(--dark);}
+.rev-loc{font-size:.7rem;color:var(--muted);}
+
+/* ══ ORDER / CTA ══ */
+.order-cta{background:linear-gradient(135deg,var(--lime),var(--teal));padding:5rem 6%;text-align:center;position:relative;overflow:hidden;}
+.order-cta::after{content:'🥤🍹🧃🥝🍋';position:absolute;font-size:6rem;opacity:.08;bottom:-1rem;right:2rem;letter-spacing:1rem;}
+.order-cta .sec-h{color:white;}
+.order-cta p{color:rgba(255,255,255,.85);font-size:.95rem;font-weight:600;max-width:480px;margin:0 auto 2.5rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-white{background:white;color:var(--dark);padding:.9rem 2.2rem;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 6px 25px rgba(0,0,0,.15);}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,.2);}
+.btn-dark{background:var(--dark);color:white;padding:.9rem 2.2rem;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-dark:hover{transform:translateY(-3px);}
+
+/* ══ CONTACT ══ */
+.contact{background:white;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.contact-left .sec-h{margin-bottom:2rem;}
+.cinfo{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
+.cinfo-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.ci1{background:linear-gradient(135deg,#FFF3E0,#FFE0B2);}
+.ci2{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}
+.ci3{background:linear-gradient(135deg,#FCE4EC,#F8BBD9);}
+.ci4{background:linear-gradient(135deg,#E3F2FD,#BBDEFB);}
+.cinfo-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:.2rem;}
+.cinfo-val{font-size:.9rem;font-weight:600;color:var(--dark);}
+.contact-map{border-radius:24px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.1);aspect-ratio:4/3;}
+.contact-map iframe{width:100%;height:100%;border:none;filter:saturate(1.2) contrast(.9);}
+
+/* ══ FOOTER ══ */
+footer{background:var(--dark);padding:4rem 6% 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
+.footer-logo{font-family:'Righteous',cursive;font-size:2.2rem;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem;display:block;}
+.footer-desc{font-size:.8rem;font-weight:500;color:rgba(255,255,255,.45);line-height:1.8;max-width:260px;}
+.footer-col h4{font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col a{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.55);text-decoration:none;transition:color .3s;}
+.footer-col a:hover{color:var(--orange);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.35);}
+.footer-copy span{color:var(--orange);}
+
+/* ══ WA FLOAT ══ */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:400;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 6px 30px rgba(37,211,102,.5);animation:waPulse 2.5s ease infinite;transition:transform .3s;}
+.wa-float:hover{transform:scale(1.12);}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 30px rgba(37,211,102,.5);}50%{box-shadow:0 6px 50px rgba(37,211,102,.75),0 0 0 10px rgba(37,211,102,.1);}}
+
+/* ══ REVEAL ══ */
+.reveal{opacity:0;transform:translateY(28px);transition:all .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .hero-visual,.hero-card{display:none;}
+  .specials-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .contact{grid-template-columns:1fr;gap:3rem;}
+  .rev-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .g-item:first-child,.g-item:nth-child(2){grid-column:span 1;grid-row:span 1;}
+}
+@media(max-width:640px){
+  nav .nav-links,.nav-order{display:none;}
+  .specials-grid,.rev-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- BLOBS -->
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">ZEST 🍹</div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#specials">Specials</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Find Us</a></li>
+  </ul>
+  <button class="nav-order" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now 🚀</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="fruit">🍊</div>
+  <div class="fruit">🍋</div>
+  <div class="fruit">🥭</div>
+  <div class="fruit">🍓</div>
+  <div class="fruit">🥝</div>
+  <div class="fruit">🍍</div>
+
+  <div class="hero-content">
+    <div class="hero-badge"><span>🌿 100% Natural</span> No artificial flavours. Ever.</div>
+    <h1 class="hero-h1">
+      <span class="w1">Fresh.</span>
+      <span class="w2">Vibrant.</span>
+      <span class="w3">Delicious.</span>
+    </h1>
+    <p class="hero-p">Kuwait's most loved juice bar — cold-pressed, blended fresh daily with the finest fruits. Your daily dose of happiness in a cup! ☀️</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-main">See Our Menu 🍹</a>
+      <a href="#order" class="btn-sec">Order on WhatsApp 💬</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">50+</div><div class="hstat-l">Fresh Juices</div></div>
+      <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">Natural</div></div>
+      <div class="hstat"><div class="hstat-n">4.9★</div><div class="hstat-l">Rating</div></div>
+      <div class="hstat"><div class="hstat-n">5K+</div><div class="hstat-l">Happy Fans</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=800&q=85" alt="Fresh Juices">
+  </div>
+  <div class="hero-card">
+    <div class="hcard-icon">🏆</div>
+    <div><div class="hcard-title">Best Juice Bar</div><div class="hcard-sub">Kuwait Awards 2024</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="mtrack">
+    <span class="m-item">🍊 Fresh Daily<div class="m-dot"></div></span>
+    <span class="m-item">🥝 Cold Pressed<div class="m-dot"></div></span>
+    <span class="m-item">🌿 100% Natural<div class="m-dot"></div></span>
+    <span class="m-item">🚚 Fast Delivery<div class="m-dot"></div></span>
+    <span class="m-item">💚 No Preservatives<div class="m-dot"></div></span>
+    <span class="m-item">☀️ Kuwait City<div class="m-dot"></div></span>
+    <span class="m-item">🍊 Fresh Daily<div class="m-dot"></div></span>
+    <span class="m-item">🥝 Cold Pressed<div class="m-dot"></div></span>
+    <span class="m-item">🌿 100% Natural<div class="m-dot"></div></span>
+    <span class="m-item">🚚 Fast Delivery<div class="m-dot"></div></span>
+    <span class="m-item">💚 No Preservatives<div class="m-dot"></div></span>
+    <span class="m-item">☀️ Kuwait City<div class="m-dot"></div></span>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why reveal" id="why">
+  <div class="why-header">
+    <div class="sec-tag" style="color:var(--orange);justify-content:center;"><div class="dot" style="background:var(--orange)"></div>Why Choose ZEST</div>
+    <h2 class="sec-h">Made with <em style="color:var(--orange)">Love</em> &amp; <em style="color:var(--teal)">Nature</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><span class="why-icon">🌿</span><div class="why-title">100% Natural</div><div class="why-desc">No artificial colours, flavours or preservatives. Just pure fruit goodness in every sip.</div></div>
+    <div class="why-card reveal"><span class="why-icon">❄️</span><div class="why-title">Cold Pressed</div><div class="why-desc">Our cold-press technology preserves maximum nutrients and natural flavour from every fruit.</div></div>
+    <div class="why-card reveal"><span class="why-icon">⚡</span><div class="why-title">Fresh Daily</div><div class="why-desc">Prepared fresh every morning. We never serve yesterday's juice — freshness is our promise.</div></div>
+    <div class="why-card reveal"><span class="why-icon">🚚</span><div class="why-title">Fast Delivery</div><div class="why-desc">Order on WhatsApp and get your fresh juices delivered to your door in under 30 minutes.</div></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-sec reveal" id="menu">
+  <div class="menu-header">
+    <div>
+      <div class="sec-tag" style="color:var(--pink);"><div class="dot" style="background:var(--pink)"></div>Fresh Menu</div>
+      <h2 class="sec-h">Our <em style="color:var(--pink)">Juicy</em> Menu</h2>
+    </div>
+    <div class="menu-cats">
+      <button class="mcat on" onclick="switchCat(this,'cold')">🧃 Cold Press</button>
+      <button class="mcat" onclick="switchCat(this,'smooth')">🥤 Smoothies</button>
+      <button class="mcat" onclick="switchCat(this,'detox')">🌿 Detox</button>
+      <button class="mcat" onclick="switchCat(this,'seasonal')">🌸 Seasonal</button>
+    </div>
+  </div>
+  <div class="menu-grid" id="menu-grid"></div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials reveal" id="specials">
+  <div class="sec-tag" style="color:var(--yellow);justify-content:center;margin-bottom:.8rem;"><div class="dot" style="background:var(--yellow)"></div>Today's Specials</div>
+  <h2 class="sec-h" style="margin-bottom:.8rem;">Don't Miss <em>Today's</em> Deals! 🔥</h2>
+  <p>Limited time offers — available today only while supplies last!</p>
+  <div class="specials-grid">
+    <div class="special-card reveal"><span class="special-emoji">🥭</span><div class="special-name">Mango Madness Combo</div><div class="special-desc">2 large mango juices + 1 fruit platter. Perfect for sharing!</div><div class="special-price">2.500 KD</div></div>
+    <div class="special-card reveal"><span class="special-emoji">🍓</span><div class="special-name">Berry Blast Bundle</div><div class="special-desc">Strawberry + Raspberry + Blueberry cold press trio. Full of antioxidants!</div><div class="special-price">3.200 KD</div></div>
+    <div class="special-card reveal"><span class="special-emoji">🌿</span><div class="special-name">Green Detox Day</div><div class="special-desc">Full day detox package — 5 green juices delivered to you across the day.</div><div class="special-price">5.500 KD</div></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-sec reveal" id="gallery">
+  <div style="text-align:center;margin-bottom:1rem;">
+    <div class="sec-tag" style="color:var(--teal);justify-content:center;"><div class="dot" style="background:var(--teal)"></div>Fresh Vibes</div>
+    <h2 class="sec-h">Feast Your <em style="color:var(--teal)">Eyes</em> First 👀</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=900&q=85" alt="Juices"><div class="g-item-label">Our Bestsellers</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=600&q=85" alt="Smoothie"><div class="g-item-label">Berry Smoothies</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=85" alt="Detox"><div class="g-item-label">Detox Blends</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85" alt="Tropical"><div class="g-item-label">Tropical Flavours</div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=85" alt="Citrus"><div class="g-item-label">Citrus Burst</div></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews reveal" id="reviews">
+  <div class="rev-header">
+    <div class="sec-tag" style="color:var(--purple);justify-content:center;"><div class="dot" style="background:var(--purple)"></div>Happy Customers</div>
+    <h2 class="sec-h">They <em style="color:var(--pink)">Love</em> ZEST! ❤️</h2>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p class="rev-text">The mango cold press is absolutely divine! I order from ZEST every single morning before work. Nothing compares to the freshness and quality. My whole family is addicted!</p><div class="rev-footer"><div class="rev-avatar av1">F</div><div><div class="rev-name">Fatima Al-Rashidi</div><div class="rev-loc">Salmiya, Kuwait 🇰🇼</div></div></div></div>
+    <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p class="rev-text">Best juice bar in all of Kuwait! The detox package genuinely changed how I feel. Clean ingredients, incredible taste and the delivery is always on time. Highly recommend!</p><div class="rev-footer"><div class="rev-avatar av2">K</div><div><div class="rev-name">Khalid Al-Mutairi</div><div class="rev-loc">Fahaheel, Kuwait 🇰🇼</div></div></div></div>
+    <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p class="rev-text">I tried 10 juice bars in Kuwait and ZEST is on another level. The green detox blend is refreshing and I love that everything is completely natural with no added sugar!</p><div class="rev-footer"><div class="rev-avatar av3">S</div><div><div class="rev-name">Sara Al-Enezy</div><div class="rev-loc">Hawalli, Kuwait 🇰🇼</div></div></div></div>
+  </div>
+</section>
+
+<!-- ORDER CTA -->
+<section class="order-cta reveal" id="order">
+  <div class="sec-tag" style="color:rgba(255,255,255,.7);justify-content:center;"><div class="dot" style="background:rgba(255,255,255,.5)"></div>Ready to Order?</div>
+  <h2 class="sec-h">Get Your Fresh Juice <em>Delivered!</em> 🚀</h2>
+  <p>Order directly on WhatsApp — ready in 15 minutes. Free delivery for orders above 3 KD!</p>
+  <div class="cta-btns">
+    <a class="btn-white" href="https://wa.me/96522345678?text=Hello%20ZEST!%20I%20want%20to%20order%20🍹" target="_blank">💬 Order on WhatsApp</a>
+    <a class="btn-dark" href="#menu">🍹 See Full Menu</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div class="contact-left">
+    <div class="sec-tag" style="color:var(--orange);"><div class="dot" style="background:var(--orange)"></div>Visit Us</div>
+    <h2 class="sec-h">Find <em style="color:var(--orange)">ZEST</em> 📍</h2>
+    <div class="cinfo"><div class="cinfo-icon ci1">📍</div><div><div class="cinfo-label">Address</div><div class="cinfo-val">Block 3, Fahaheel District<br>Kuwait City, Kuwait</div></div></div>
+    <div class="cinfo"><div class="cinfo-icon ci2">📞</div><div><div class="cinfo-label">Phone & WhatsApp</div><div class="cinfo-val">+965 2234 5678</div></div></div>
+    <div class="cinfo"><div class="cinfo-icon ci3">🕐</div><div><div class="cinfo-label">Opening Hours</div><div class="cinfo-val">Daily: 7:00 AM – 11:00 PM</div></div></div>
+    <div class="cinfo"><div class="cinfo-icon ci4">🚚</div><div><div class="cinfo-label">Delivery</div><div class="cinfo-val">Free above 3 KD · 15–30 mins</div></div></div>
+  </div>
+  <div class="contact-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478!2d48.0780!3d29.0850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zRmFoYWhlZWw!5e0!3m2!1sen!2skw!4v1" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div><span class="footer-logo">ZEST 🍹</span><p class="footer-desc">Kuwait's freshest juice bar — cold-pressed, 100% natural, delivered fast. Your daily dose of happiness!</p></div>
+    <div class="footer-col"><h4>Menu</h4><ul><li><a href="#">Cold Press</a></li><li><a href="#">Smoothies</a></li><li><a href="#">Detox Blends</a></li><li><a href="#">Seasonal</a></li></ul></div>
+    <div class="footer-col"><h4>Visit</h4><ul><li><a href="#">Fahaheel Branch</a></li><li><a href="#">Salmiya Branch</a></li><li><a href="#">Find on Maps</a></li></ul></div>
+    <div class="footer-col"><h4>Follow Us</h4><ul><li><a href="#">Instagram 📸</a></li><li><a href="#">TikTok 🎵</a></li><li><a href="#">WhatsApp 💬</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 ZEST Juice Bar, Kuwait. All rights reserved. Website by <span>Rimsha Fatima</span></p>
+    <p class="footer-copy">🌿 100% Natural · Halal Certified · Kuwait</p>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/96522345678?text=Hello%20ZEST!%20I%20want%20to%20order%20🍹" target="_blank">💬</a>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('solid',scrollY>60);});
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Menu data
+const MD={
+  cold:[
+    {img:'https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=500&q=80',name:'Tropical Sunrise',desc:'Mango, pineapple, passion fruit, orange — pure tropical heaven in a glass',price:'1.800 KD',badge:'fresh'},
+    {img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&q=80',name:'Berry Burst',desc:'Strawberry, raspberry, blueberry cold press — packed with antioxidants',price:'2.200 KD',badge:'hot'},
+    {img:'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=500&q=80',name:'Citrus Glow',desc:'Orange, grapefruit, lemon, turmeric — your daily vitamin C boost',price:'1.500 KD',badge:'fresh'},
+    {img:'https://images.unsplash.com/photo-1546173159-315724a31696?w=500&q=80',name:'Watermelon Mint',desc:'Fresh watermelon, cucumber, mint, lime — the ultimate summer refresher',price:'1.600 KD',badge:'new'},
+  ],
+  smooth:[
+    {img:'https://images.unsplash.com/photo-1553530979-212c5061b8cf?w=500&q=80',name:'Peanut Power',desc:'Banana, peanut butter, dates, oat milk — the perfect post-workout shake',price:'2.500 KD',badge:'hot'},
+    {img:'https://images.unsplash.com/photo-1582196016295-f8c8bd4b3a99?w=500&q=80',name:'Pink Dream',desc:'Strawberry, banana, coconut milk, rose water — creamy and dreamy',price:'2.200 KD',badge:'special'},
+    {img:'https://images.unsplash.com/photo-1619898804176-60aca6b9f7da?w=500&q=80',name:'Mango Lassi',desc:'Alphonso mango, yoghurt, cardamom, honey — Kuwaiti summer classic',price:'2.000 KD',badge:'hot'},
+    {img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80',name:'Green Machine',desc:'Spinach, banana, mango, coconut water, ginger — energy all day long',price:'2.300 KD',badge:'fresh'},
+  ],
+  detox:[
+    {img:'https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=500&q=80',name:'Pure Green',desc:'Cucumber, celery, spinach, apple, lemon, ginger — deep cleanse detox',price:'2.500 KD',badge:'special'},
+    {img:'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=500&q=80',name:'Golden Glow',desc:'Carrot, orange, turmeric, ginger, black pepper — anti-inflammatory powerhouse',price:'2.200 KD',badge:'new'},
+    {img:'https://images.unsplash.com/photo-1638176066666-ffb2f013c7dd?w=500&q=80',name:'Charcoal Lemon',desc:'Activated charcoal, lemon, ginger, mint — ultimate toxin flush',price:'2.800 KD',badge:'special'},
+    {img:'https://images.unsplash.com/photo-1570696516188-ade861b84a49?w=500&q=80',name:'Beet Energy',desc:'Beetroot, apple, carrot, ginger, lemon — natural energy and iron boost',price:'2.000 KD',badge:'fresh'},
+  ],
+  seasonal:[
+    {img:'https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?w=500&q=80',name:'Date & Rose',desc:'Fresh dates, rose water, cardamom, milk — inspired by Ramadan traditions',price:'2.000 KD',badge:'special'},
+    {img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&q=80',name:'Summer Hibiscus',desc:'Hibiscus flower, watermelon, mint, lemon — refreshing and vibrant pink',price:'1.800 KD',badge:'new'},
+    {img:'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=500&q=80',name:'Pomegranate Kiss',desc:'Fresh pomegranate, orange, strawberry, rose — sweet, tart and beautiful',price:'2.500 KD',badge:'hot'},
+    {img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500&q=80',name:'Guava Paradise',desc:'Fresh guava, pineapple, lime, chilli rim — tropical with a kick!',price:'1.900 KD',badge:'new'},
+  ],
+};
+
+const bLabel={fresh:'🌿 Fresh',hot:'🔥 Hot',new:'✨ New',special:'⭐ Special'};
+
+function switchCat(btn,cat){
+  document.querySelectorAll('.mcat').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderMenu(cat);
+}
+
+function renderMenu(cat){
+  const g=document.getElementById('menu-grid');
+  g.innerHTML='';
+  MD[cat].forEach(item=>{
+    g.innerHTML+=`<div class="menu-card">
+      <div class="mc-img">
+        <img src="${item.img}" alt="${item.name}" loading="lazy">
+        <div class="mc-badge ${item.badge}">${bLabel[item.badge]}</div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-name">${item.name}</div>
+        <div class="mc-desc">${item.desc}</div>
+        <div class="mc-footer">
+          <div class="mc-price">${item.price}</div>
+          <button class="mc-order" onclick="window.open('https://wa.me/96522345678?text=Hello! I want to order ${encodeURIComponent(item.name)} 🍹','_blank')">Order 💬</button>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+renderMenu('cold');
+</script>
+</body>
+</html>
